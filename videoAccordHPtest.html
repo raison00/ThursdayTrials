@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <title>my script</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>        	
+		<script type="text/javascript">
+		  $(document).ready(function($) {
+		    $('.accordion-button').click(function(){
+		      $('.accordion-content').slideToggle('slow');
+		    });
+		  });
+		</script>
+		<script type="text/javascript" src="http://mcomnycreativereview/apisano/ACCORDION-LIGHT/lib/jquery-1.10.1.min.js"></script>
+		<script type="text/javascript" src="http://mcomnycreativereview/apisano/ACCORDION-LIGHT/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+		<script type="text/javascript" src="http://mcomnycreativereview/apisano/ACCORDION-LIGHT/source/jquery.fancybox.js?v=2.1.5"></script>
+		<link rel="stylesheet" type="text/css" href="http://mcomnycreativereview/apisano/ACCORDION-LIGHT/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+		<script type="text/javascript" src="http://mcomnycreativereview/apisano/ACCORDION-LIGHT/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+			<script type="text/javascript">
+		$(document).ready(function() {
+			$('.fancybox').fancybox();
+			$('.fancybox-media')
+				.attr('rel', 'media-gallery')
+				.fancybox({
+					openEffect : 'none',
+					closeEffect : 'none',
+					prevEffect : 'none',
+					nextEffect : 'none',
+
+					arrows : false,
+					helpers : {
+						media : {},
+						buttons : {}
+					}
+				});
+
+
+		});
+	</script>
+<style>
+	body {background-color: #ccc;}
+	.container {width: 960px; margin: 3em auto;}
+	#accordion { height: 125px; background: url(http://mcomnycreativereview/apisano/ACCORDION-LIGHT/images/bg.jpg) no-repeat scroll top; z-index: 2; padding: 0; }
+  	.accordion-content {display: none; background: url(http://mcomnycreativereview/apisano/ACCORDION-LIGHT/images/bg.jpg) no-repeat scroll top #fff; overflow: hidden; height: 607px; margin: 0; text-align: center; }
+  	.accordion-content .image-content {margin-top: 160px; padding-left: 420px; }
+	.accordion-button {
+		position: relative;
+		width: 50px;
+		height: 50px;
+		right: -900px;
+		top: -25px;
+		background: url(http://mcomnycreativereview/apisano/ACCORDION-LIGHT/images/open-btn.png) no-repeat center center;
+		cursor: pointer;	
+	}	
+	.accordion-button:active, .accordion-button:hover {
+		background-image: url(http://mcomnycreativereview/apisano/ACCORDION-LIGHT/images/close-btn.png);
+	}
+
+	.fancybox-custom .fancybox-skin {
+			box-shadow: 0 0 50px #222;
+		}
+</style>
+</head>
+<body>
+	<div class="container">		
+		<div id="accordion">					  
+		  	<div class="accordion-content"><div class="image-content"><a class="fancybox-media" href="http://www.youtube.com/watch?v=Nm2FJMJWKkQ"><img src="http://mcomnycreativereview/apisano/ACCORDION-LIGHT/images/video.jpg" /></a><br><br><img src="http://mcomnycreativereview/apisano/ACCORDION-LIGHT/images/learn-more.png" /><br><img src="http://mcomnycreativereview/apisano/ACCORDION-LIGHT/images/join-now.png" /></div></div>
+			<div id="white-space"><div class="accordion-button"></div></div>
+		</div>		
+	</div>	
+</body>
+</html>
