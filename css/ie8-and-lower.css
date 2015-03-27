@@ -1,0 +1,34 @@
+﻿#dockers-ff-wrapper .ff-panel-category * {
+	filter: inherit;
+}
+
+#dockers-ff-wrapper .ff-fit-overlay {
+	background-color: transparent;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFFFF,endColorstr=#FFFFFFFF)"; /* IE8 */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFFFF,endColorstr=#FFFFFFFF);   /* IE6 & 7 */
+}
+
+#dockers-ff-wrapper .ff-category-nav {
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/nav-bg.png', sizingMethod='scale');
+	-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/nav-bg.png', sizingMethod='scale')";
+}
+
+#dockers-ff-wrapper .ff-style-nav-tab {
+	background-color: transparent;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)"; /* IE8 */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);   /* IE6 & 7 */
+}
+
+#dockers-ff-wrapper .ff-fit-info-wrapper {
+	background-color: transparent;
+	zoom: 1;
+}
+
+#dockers-ff-wrapper .ff-style-nav {
+	border: 1px solid #aaa;
+}
+
+#dockers-ff-wrapper .ff-fit-scroll-style {
+	display: none !important;
+	visibility: hidden !important;
+}

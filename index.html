@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=8">
+		<base target="_parent" />
+		
+		<title>Dockers Fit Guide</title>
+		<meta charset="utf-8">
+		<link href="css/ff-app.css" rel="stylesheet" type="text/css" />
+		<!--[if lt IE 9]>
+		<link href="css/ie8-and-lower.css" rel="stylesheet" type="text/css" />
+		<![endif]-->
+	</head>
+	<body>
+		
+			<div id="dockers-ff-wrapper">
+				<!-- HEADER -->
+				<div id="ff-header">
+					<!-- <div id="ff-header-logo-text">FIT FINDER</div> -->
+					<div class="ff-header-bar">
+					<div id="ff-header-logo-image"></div>
+				</div>
+				</div>
+				
+				<!-- PAUSE OVERLAY 
+				<div id="ff-pause-overlay"></div>
+				-->
+				<!-- LOADING -->
+				<div id="ff-panel-loading" class="ff-panel">
+					<div class="ff-loading-progress-animation"></div>
+					<div class="ff-loading-progress-icon"></div>
+					<div class="ff-loading-progress-bar"></div>
+				</div>
+
+			</div>
+	
+		<!-- M/W -->
+		<script id="ff-category-nav-template" type="text/template">
+			<%
+			_.each(fits, function(fit, i, list) {
+				var smartWidth = liWidth;
+				if (leftOverWidth > 0) {
+					smartWidth++;
+					leftOverWidth--;
+				}
+			%>
+				<li data-fit="<%= fit.get('category') %>_<%= fit.get('name') %>" class="ff-catnav-<%= fit.get('category') %>-<%= fit.get('name') %>" style="width: <%= smartWidth %>px;"><%= fit.get('navName') %></li>
+
+			<%
+			});
+			%>
+			<span class="ff-category-nav-slider"></span>
+		</script>
+
+		<script id="ff-style-nav-template" type="text/template">
+			<div class="ff-style-nav" style="min-width: <%= navMinWidth %>px;">
+				<div id="ff-style-nav-style-list-holder" class="ff-style-nav-style-list-holder clear-fix">
+					
+					<ul class="ff-style-nav-style-list clear-fix">
+					<%
+					_.each(styles, function(style, i, list) {
+					%>
+						<li data-category="<%= style.get('category') %>" data-fit="<%= style.get('fit') %>" data-style="<%= style.get('name') %>">
+							<div class="ff-style-nav-style-thumb" style="background-position: <%= style.get('styleNavBackgroundPosition') %>; background-image: url(images/<%= style.get('category') %>/<%= style.get('fit') %>/nav-style-sprite.jpg);"><div class="ff-style-nav-style-desc"><%= style.get('styleNavName') %></div></div><button class="ff-levis-shop-style ff-button"><div class="animation-zoom-in"></div>Shop Style</button>
+							
+						</li>
+					<% }); %>
+					</ul>
+	
+				</div>
+			</div>
+		<div class="ff-style-nav-tab ff-style-nav-<%= fitCategory %>">
+			<span class="ff-style-nav-toggle" style="left: <%= tabLeftPos %>px">Select style<span class="ff-style-nav-arrow"></span></span><span class="ff-style-nav-close"></span></div>
+	
+	</script>
+
+		<script id="ff-category-template" type="text/template">
+			<div id="ff-hero">
+					<h1>Dockers<sup>&reg;</sup> Fit Guide</h1>
+					<div class="ff-hero-subtext">choose from five fits to keep you looking your best</div>
+				</div>
+				
+			<%
+			_.each(fits, function(fit, i, list) {
+				var smartWidth = liWidth;
+				if (leftOverWidth > 0) {
+					smartWidth++;
+					leftOverWidth--;
+				}
+			
+			%>
+				<li style="background-position: <%= fit.get('fitBackgroundPos') %>; background-image: url(images/<%= fit.get('category') %>/fits-sprite.jpg); width: <%= smartWidth %>px;" data-fit="<%= fit.get('category') %>_<%= fit.get('name') %>">
+				
+					<div class="ff-fit-hover-overlay <%= fit.get('category') %>-<%= fit.get('name') %>"><span class="ff-fit-hover-name"><%= fit.get('navName') %></span></div><div class="ff-fit-overlay"></div>
+					<span class="ff-category-slider"></span>
+				</li>
+			<%
+			});
+			%>
+
+		</script>
+
+		<script id="ff-fit-template" type="text/template" name="fit-panel">
+		<div class="ff-fit-scroll-style-left ff-fit-scroll-style" data-find="prev" ></div>
+		<div class="ff-panel-holder">
+			<div class="ff-fit-background ff-fit-background-1" style="background-image: url(images/<%= category %>/<%= name %>/background.jpg);"></div>
+			<div class="ff-fit-background ff-fit-background-2" style="background-image: url(images/<%= category %>/<%= name %>/background.jpg)"></div>
+			<div class="ff-fit-background ff-fit-background-3" style="background-image: url(images/<%= category %>/<%= name %>/background.jpg)"></div>
+			<div class="ff-fit-background ff-fit-background-4" style="background-image: url(images/<%= category %>/<%= name %>/background.jpg)"></div>
+			<div class="ff-fit-info-wrapper" id="<%= category %>-<%= name %>">
+				<div class="ff-fit-info-details">
+					<h2><%= heading %></h2>
+					<!-- /* <h3><%= description %></h3> */ -->
+		
+						<ol class="ff-fit-info-points">
+						<%
+						_.each(fitPoints, function(fitPoint, key, list) {
+						%>
+							<li class="ff-fit-point ff-fit-point-text">
+								<%= fitPoint.contentText %>
+							</li>
+
+						<%
+						});
+						%>
+						</ol>
+					</div>
+				<ul class="ff-view-thumbs clear-fix">
+					<li class="ff-fit-thumb-1 active" data-target="background-1"><div style="background-image: url(images/<%= category %>/<%= name %>/thumbs.png);"></div></li>
+					<li class="ff-fit-thumb-2" data-target="background-2"><div style="background-image: url(images/<%= category %>/<%= name %>/thumbs.png);"></div></li>
+					<li class="ff-fit-thumb-3" data-target="background-3"><div style="background-image: url(images/<%= category %>/<%= name %>/thumbs.png);"></div></li>
+						<li class="ff-fit-thumb-4" data-target="background-4"><div style="background-image: url(images/<%= category %>/<%= name %>/thumbs.png);"></div></li>
+				</ul>
+				<div class="ff-fit-buttons">
+					<% if ("undefined"!==typeof detailsVideo && 0<detailsVideo.length) { %>
+					<button type="button" class="ff-button ff-fit-video-button" data-target="<%= detailsVideo %>"><div class="animation-zoom-in"></div>Fit Video</button>
+					<% }; %>
+					<button type="button" class="ff-button ff-fit-style-button"><div class="animation-zoom-in"></div>Explore <%= heading %> styles</button>
+
+					<button type="button" class="ff-fit-shop-button ff-button"><div class="animation-zoom-in"></div><%= shopButtonText %></button>
+				</div>
+			</div>
+			</div>
+			<div class="ff-fit-scroll-style-right ff-fit-scroll-style" data-find="next" ></div>
+		</script>
+
+		<script id="ff-style-template" type="text/template" name="style-panel">
+			<div class="ff-fit-scroll-style-left ff-fit-scroll-style" data-find="prev" data-fit="<%= category %>_<%= fit %>"></div>
+			<div class="ff-panel-holder">
+			<div class="ff-style-background ff-style-background-1" style="background-image: url(images/<%= category %>/<%= fit %>/<%= name %>/background.jpg)"></div>
+			<div class="ff-style-background ff-style-background-2" style="background-image: url(images/<%= category %>/<%= fit %>/<%= name %>/background.jpg)"></div>
+			<div class="ff-style-background ff-style-background-3" style="background-image: url(images/<%= category %>/<%= fit %>/<%= name %>/background.jpg)"></div>
+			<% if ("undefined" !==typeof extraStyle && extraStyle ){ %>
+				<div class="ff-style-background ff-style-background-4" style="background-image: url(images/<%= category %>/<%= fit %>/<%= name %>/background.jpg)"></div>
+				<% } %>
+			
+			<div class="ff-style-info-wrapper">
+				<div class="ff-style-info-details">
+				<h2><%= heading %></h2>
+				<ol class="ff-style-info-points">
+						<%
+						_.each(stylePoints, function(stylePoint, key, list) {
+						%>
+							<li class="ff-style-point ff-style-point-text">
+								<%= stylePoint.contentText %>
+							</li>
+
+						<%
+						});
+						%>
+						</ol>
+				
+				<ul class="ff-style-view-thumbs clear-fix">
+					<li class="ff-style-thumb-1 active" data-target="background-1"><div style="background-image: url(images/<%= category %>/<%= fit %>/<%= name %>/thumbs.png);"></div></li>
+					<li class="ff-style-thumb-2" data-target="background-2"><div style="background-image: url(images/<%= category %>/<%= fit %>/<%= name %>/thumbs.png);"></div></li>
+					<li class="ff-style-thumb-3" data-target="background-3"><div style="background-image: url(images/<%= category %>/<%= fit %>/<%= name %>/thumbs.png);"></div></li>
+					<% if ("undefined" !==typeof extraStyle && extraStyle ){ %>
+						<li class="ff-style-thumb-4" data-target="background-4"><div style="background-image: url(images/<%= category %>/<%= fit %>/<%= name %>/thumbs.png);"></div></li>
+					<% } %>
+				</ul>
+				<div class="ff-style-buttons">
+				<% if ("undefined"!==typeof detailsVideo && 0<detailsVideo.length) { %>
+					<button type="button" class="ff-button ff-style-video-button" data-target="<%= detailsVideo %>"><div class="animation-zoom-in"></div>Fit Video</button>
+				<% }; %>	
+				<button type="button" class="ff-button ff-style-detail-button"><div class="animation-zoom-in"></div>Detail Images</button>
+				<button type="button" class="ff-button ff-style-shop-button"><div class="animation-zoom-in"></div>Shop</button>
+				</div>
+				</div>
+			</div>
+			<span class="ff-style-extra-text"><%= extraText %></span>
+		<% if ("undefined" !==typeof extraText2 && 0<extraText2.length){ %>		
+			<span class="ff-style-extra-text2"><%= extraText2 %></span>
+		<% }; %>
+			</div>
+			<div class="ff-fit-scroll-style-right ff-fit-scroll-style" data-find="next"></div>
+
+		</script>
+
+		<script id="ff-style-detail-template" type="text/template">
+		<div class="ff-detail-bar">
+			Detail Images<span class="ff-detail-close-x"></span>
+		</div>
+			<div class="ff-detail-content">
+				<button type="button" class="ff-details-left-arrow ff-details-arrows" data-direction="left"></button>
+				<button type="button" class="ff-details-right-arrow ff-details-arrows" data-direction="right"></button>
+				<div class="ff-detail-content-background background-1 active" style="background-image: url(images/<%= category %>/<%= fit %>/<%= name %>/view-1.jpg);"></div>
+				<div class="ff-detail-content-background background-2" style="background-image: url(images/<%= category %>/<%= fit %>/<%= name %>/view-2.jpg);"></div>
+				<div class="ff-detail-content-background background-3" style="background-image: url(images/<%= category %>/<%= fit %>/<%= name %>/view-3.jpg);"></div>
+				<div class="ff-detail-content-background background-4" style="background-image: url(images/<%= category %>/<%= fit %>/<%= name %>/view-4.jpg);"></div>
+				<div class="ff-detail-info-wrapper">
+					<h2><%= heading %></h2>
+					<hr />
+					<% if ("undefined"!==typeof detailsVideo && 0<detailsVideo.length) { %>
+						<button type="button" class="ff-button ff-detail-video-btn" data-target="<%= detailsVideo %>"><div class="animation-zoom-in"></div>Fit Video</button>
+					<% }; %>	
+				
+					<button type="button" class="ff-detail-shop-btn ff-button"><div class="animation-zoom-in"></div>Shop</button>
+				</div>
+			</div>
+		</script>
+		
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript">window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>');</script>
+	    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.2/TweenMax.min.js"></script>
+		<script type="text/javascript" src="js/ff.packaged.js"></script>
+		<script type="text/javascript" src="js/ff.data.js"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function () {
+			    app.controls.views.header.changeCategory('men');
+			        if (isSafari && version == "6") {
+					$("#dockers-ff-wrapper").addClass("safari6");
+					}
+			});
+
+		</script>
+	</body>
+</html>
+	
